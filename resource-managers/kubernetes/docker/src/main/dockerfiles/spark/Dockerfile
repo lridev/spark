@@ -14,11 +14,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-ARG java_image_tag=8-jre-slim
+#ARG java_image_tag=8-jre-slim
 
-FROM openjdk:${java_image_tag}
+FROM adoptopenjdk/openjdk14-openj9:debianslim-jre
+#FROM openjdk:${java_image_tag}
 
-ARG spark_uid=185
+#ARG spark_uid=185
 
 # Before building the docker image, first build and make a Spark distribution following
 # the instructions in http://spark.apache.org/docs/latest/building-spark.html.
@@ -58,4 +59,4 @@ RUN chmod g+w /opt/spark/work-dir
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
 
 # Specify the User that the actual main process will run as
-USER ${spark_uid}
+#USER ${spark_uid}
